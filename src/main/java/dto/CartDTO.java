@@ -2,55 +2,41 @@ package dto;
 
 import java.math.BigDecimal;
 
+import java.util.List
+
 import javax.validation.constraints.Pattern;
 
 public class CartDTO {
 	
-//	@NotNull(message="{id.absent}")
-//	@Pattern(regexp="[a-zA-Z0-9._]+[a-zA-Z]{2,}\\.[a-zA-Z][a-zA-Z.]+", message="{invalid.email.format}")
-	private long id;
-//	@Pattern(regexp="([A-Za-z])+(\\s[A-Za-z]+)*", message = "{cart.invalid.name}")
-	private String name;
-	private String description;
-	private BigDecimal price;
-	private boolean selected;
-	private Integer quantity;
+	private Integer id;
+	
+	private long totalPrice;
+	
+	private List<ItemDTO> order;
 	
 	public long getId() {
 		return id;
 	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	
+	public long getTotalPrice() {
+		return totalPrice;
 	}
-	public void setName(String name) {
-		this.name = name;
+	
+	public void setTotalPrice(long totalPrice) {
+		this.totalPrice = totalPrice;
 	}
-	public String getDescription() {
-		return description;
+	
+	public List<ItemDTO> getOrder() {
+		return order;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	
+	public void setOrder(List<ItemDTO> order) {
+		this.order = order;
 	}
-	public BigDecimal getPrice() {
-		return price;
-	}
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
-	public Integer getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
-	public boolean isSelected() {
-		return selected;
-	}
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
-
+	
+	
 }
