@@ -24,9 +24,9 @@ import lombok.NoArgsConstructor;
 public class Item {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ITEM_ID")
-	private long id;
+	private Integer itemId;
 	
 	@Column(name="NAME")
 	private String name;
@@ -46,5 +46,83 @@ public class Item {
 //	@ManyToOne(cascade=CascadeType.ALL)
 //	@JoinColumn(name="ITEM_CART_ID")
 //	private CartItem cartItem;
+	
+	public Integer getItemId() {
+		return itemId;
+	}
+	
+	public void setItemId(Integer itemId) {
+		this.itemId = itemId;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public long getPrice() {
+		return price;
+	}
+	
+	public void setPrice(long price) {
+		this.price = price;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public boolean getSelected() {
+		return selected;
+	}
+	
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
+	
+	public Integer getQuantity() {
+		return quantity;
+	}
+	
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj)
+			return true;
+		if(obj == null)
+			return false;
+		if(getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		if(itemId == null) {
+			if (other.itemId != null)
+				return false;
+		} else if (!itemId.equals(other.itemId))
+			return false;
+		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return "Item [Item Id=" + itemId + ", name=" + name + ", price=" + price + ", description=" + description + ", selected=" + selected + ", quantity=" + quantity + "]";
+	}
 
 }

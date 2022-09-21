@@ -1,23 +1,30 @@
 package service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import dto.CartDTO;
+import dto.ItemDTO;
 import exception.OrderManagerException;
 import model.Cart;
+import model.Item;
 
 public interface CartService {
 	
-	public Cart addCart(Cart cart) throws OrderManagerException;
+	CartDTO createCart(CartDTO cartDTO) throws OrderManagerException;
 	
-	public Optional<Cart> getCart(long id) throws OrderManagerException;
+	List<ItemDTO> getItemsByCart(Integer cartId) throws OrderManagerException;
 	
-	void addProductToCart(Long id, CartDTO cart)throws OrderManagerException;
+	CartDTO updateCart(Integer cartId, List<Item> order) throws OrderManagerException;
 	
-	List<CartDTO> getCustomerCarts(Long id) throws OrderManagerException;
+	void addItemToCart(Item item, List<Item> order, Integer cartId) throws OrderManagerException;
 	
-	void modifyQuantityOfProductInCart(Long id, Integer quantity, Integer productId) throws OrderManagerException;
+	void deleteItemFromCart(Item item, List<Item> order, Integer cartId) throws OrderManagerException;
 	
-	void deleteProductFromCart(Long id, String name) throws OrderManagerException;
+	long calculateTotal(List<Item> order) throws Exception;
+	
+	List<ItemDTO> allItems();
+	
+	
 }
